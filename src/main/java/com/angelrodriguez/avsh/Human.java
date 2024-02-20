@@ -1,0 +1,9 @@
+package com.angelrodriguez.avsh;
+
+public class Human {
+
+	public Human() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
