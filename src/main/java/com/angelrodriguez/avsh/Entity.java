@@ -1,23 +1,25 @@
 package com.angelrodriguez.avsh;
 
 public abstract class Entity {
-	protected String name;
-	protected int health;
-	protected int damage;
-	
-	public Entity(String name, int health, int damage) {
-		this.name = name;
-		this.health = health;
-		this.damage = damage;
-	}
-	
-	public void takeDamage(int damage) {
-		this.health -= damage;
-	}
-	
-	public void dealDamage(Entity entity) {
-		entity.takeDamage(damage);
-	}
+    protected String name;
+    protected int health;
+    protected int damage;
+
+    public Entity(String name, int health, int damage) {
+        this.name = name;
+        this.health = health;
+        this.damage = damage;
+    }
+
+    public void takeDamage(int damage) {
+        this.health -= damage;
+        System.out.println(name + " takes " + damage + " damage. Remaining health: " + health);
+    }
+
+    public void dealDamage(Entity entity) {
+        entity.takeDamage(damage);
+        System.out.println(name + " deals " + damage + " damage to " + entity.getName());
+    }
 	
 	public abstract void activateSkill();
 	
