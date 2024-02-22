@@ -50,6 +50,24 @@ public abstract class Entity {
 	}
 
 	protected abstract void increaseHealth(int healingAmount);
+
+	public boolean isAlive() {
+		return this.health > 0;
+	}
+
+	public void attack(Entity target) {
+	    if (target != null && target.isAlive()) {
+	        target.takeDamage(this.damage);
+	        System.out.println(this.getName() + " attacks " + target.getName() + " for " + this.damage + " damage.");
+	    }
+	}
+	
+	public void takeDamage() {
+	    this.health -= damage;
+	    if (this.health < 0) {
+	        this.health = 0; 
+	    }
+	}	
 	
 }
 	
