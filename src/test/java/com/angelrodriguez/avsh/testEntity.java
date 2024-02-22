@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class testEntity {
     
-    @Test
+	@Test
     public void testEntityInstantiation() {
         // Create an entity object
         Entity entity = new EntityImpl("TestEntity", 100, 10);
@@ -24,8 +24,15 @@ public class testEntity {
         
         @Override
         public void activateSkill() {
-          
+            System.out.println(getName() + " activates their skill, increasing damage temporarily.");
+            this.damage += 10; // Increase damage by 10 temporarily
         }
+
+		@Override
+	    protected void increaseHealth(int healingAmount) {
+	        this.health += healingAmount;
+	        System.out.println(getName() + " heals for " + healingAmount + " points. Current health: " + this.health);
+	    }
     }
 }
 

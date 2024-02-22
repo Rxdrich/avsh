@@ -3,22 +3,24 @@ package com.angelrodriguez.avsh;
 public class Aliens extends Entity {
 	
     private int regenerationRate;
+	private int maxHealth;
 
-    public Aliens(String name, int health, int damage, int regenerationRate) {
+    public Aliens(String name, int health, int damage, int regenerationRate, int maxHealth) {
         super(name, health, damage);
         this.regenerationRate = regenerationRate;
+        this.maxHealth = maxHealth;
     }
 
     @Override
     public void activateSkill() {
-        System.out.println(name + " activates a crunchy skill!");
-        damage += 5;
-        System.out.println(name + "'s damage is temporarily increased to " + damage);
+        // Implementation of an alien-specific skill
+        System.out.println(getName() + " activates a crunchy skill!");
     }
 
     public void regenerateHealth() {
-        health += regenerationRate;
-        System.out.println(name + " regenerates " + regenerationRate + " health. Total health: " + health);
+        // Increase health by the regeneration rate without exceeding maxHealth
+        this.health = Math.min(this.health + regenerationRate, maxHealth);
+        System.out.println(getName() + " regenerates " + regenerationRate + " health. Current health: " + health);
     }
 
     public void mutate() {
@@ -26,5 +28,18 @@ public class Aliens extends Entity {
         regenerationRate += 2; 
         damage += 2; 
     }
+
+    @Override
+    protected void increaseHealth(int healingAmount) {
+        
+        this.health += healingAmount;
+
+        if (this.health > this.maxHealth) {
+            this.health = this.maxHealth;
+        }
+
+        System.out.println(this.name + " has increased health by " + healingAmount + ". Current health: " + this.health);
+    }
+
 
 }

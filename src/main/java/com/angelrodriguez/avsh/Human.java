@@ -2,6 +2,7 @@ package com.angelrodriguez.avsh;
 
 public class Human extends Entity {
     private int armor;
+    private int maxHealth;
 
     public Human(String name, int health, int damage, int armor) {
         super(name, health, damage);
@@ -35,5 +36,17 @@ public class Human extends Entity {
 	public void setArmor(int armor) {
 		this.armor = armor;
 	}
+
+	@Override
+	protected void increaseHealth(int healingAmount) {
+	    this.health += healingAmount;
+
+	    if (this.health > this.maxHealth) {
+	        this.health = this.maxHealth;
+	    }
+	    
+	    System.out.println(this.name + " has increased health by " + healingAmount + ". Current health: " + this.health);
+	}
+
 
 }

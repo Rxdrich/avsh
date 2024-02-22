@@ -48,6 +48,8 @@ public abstract class Entity {
 	public void setDamage(int damage) {
 		this.damage = damage;
 	}
+
+	protected abstract void increaseHealth(int healingAmount);
 	
 }
 	
